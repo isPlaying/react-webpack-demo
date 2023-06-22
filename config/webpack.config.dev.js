@@ -12,7 +12,7 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.module\.(css|less)$/,
+        test: /\.less$/,
         use: [
           'style-loader',
           {
@@ -27,22 +27,10 @@ module.exports = merge(baseConfig, {
           'postcss-loader',
           'less-loader',
         ],
+        include: /\.module\.less$/,
       },
       {
-        test: /.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          'postcss-loader',
-        ],
-      },
-      {
-        test: /.less$/,
+        test: /\.less$/,
         use: [
           'style-loader',
           {
@@ -54,6 +42,38 @@ module.exports = merge(baseConfig, {
           'postcss-loader',
           'less-loader',
         ],
+        exclude: /\.module\.less$/,
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
+              importLoaders: 1,
+            },
+          },
+          'postcss-loader',
+        ],
+        include: /\.module\.css$/,
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          'postcss-loader',
+        ],
+        exclude: /\.module\.css$/,
       },
     ],
   },

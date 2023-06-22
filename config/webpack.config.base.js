@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const resolve = (targetPath) => {
   return path.resolve(__dirname, '..', targetPath);
