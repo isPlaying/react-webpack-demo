@@ -3,12 +3,14 @@ const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.config.base.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const smp = new SpeedMeasurePlugin();
 
 const resolve = (targetPath) => {
   return path.resolve(__dirname, '..', targetPath);
 };
 
-module.exports = merge(baseConfig, {
+const config = merge(baseConfig, {
   mode: 'production',
   module: {
     rules: [
@@ -91,3 +93,11 @@ module.exports = merge(baseConfig, {
     maxAssetSize: 512000,
   },
 });
+
+// https://github.com/stephencookdev/speed-measure-webpack-plugin/issues/167
+const cssPluginIndex = config.plugins.findIndex((e) => e.constructor.name === 'MiniCssExtractPlugin');
+const cssPlugin = config.plugins[cssPluginIndex];
+const configToExport = smp.wrap(config);
+configToExport.plugins[cssPluginIndex] = cssPlugin;
+
+module.exports = configToExport;

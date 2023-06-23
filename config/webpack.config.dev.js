@@ -83,6 +83,10 @@ module.exports = merge(baseConfig, {
       template: resolve('./public/index.html'),
     }),
   ],
+  cache: {
+    type: 'filesystem',
+    allowCollectingMemory: true,
+  },
   devServer: {
     hot: true,
     open: true,
