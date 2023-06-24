@@ -92,6 +92,10 @@ const config = merge(baseConfig, {
     minimize: true,
     minimizer: [new CssMinimizerPlugin()],
   },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
 });
 
 // https://github.com/stephencookdev/speed-measure-webpack-plugin/issues/167
