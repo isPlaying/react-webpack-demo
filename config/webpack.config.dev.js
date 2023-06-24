@@ -9,6 +9,9 @@ const resolve = (targetPath) => {
 
 module.exports = merge(baseConfig, {
   mode: 'development',
+  experiments: {
+    lazyCompilation: true,
+  },
   module: {
     rules: [
       {
@@ -91,4 +94,5 @@ module.exports = merge(baseConfig, {
     hot: true,
     open: true,
   },
+  devtool: 'source-map',
 });

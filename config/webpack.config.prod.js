@@ -2,6 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.config.base.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const smp = new SpeedMeasurePlugin();
@@ -81,16 +82,15 @@ const config = merge(baseConfig, {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash:8].css' }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: resolve('./public/index.html'),
     }),
   ],
-  performance: {
-    hints: false,
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
+  optimization: {
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin()],
   },
 });
 

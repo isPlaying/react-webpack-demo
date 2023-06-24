@@ -10,7 +10,7 @@ module.exports = {
     path: resolve('./dist'),
     clean: true,
     publicPath: '/',
-    filename: '[name].[contenthash].js',
+    filename: '[name].[contenthash:8].js',
   },
   module: {
     rules: [
