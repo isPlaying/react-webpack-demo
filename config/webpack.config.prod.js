@@ -4,6 +4,7 @@ const baseConfig = require('./webpack.config.base.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const smp = new SpeedMeasurePlugin();
 
@@ -87,14 +88,27 @@ const config = merge(baseConfig, {
       filename: 'index.html',
       template: resolve('./public/index.html'),
     }),
+    // new BundleAnalyzerPlugin(),
   ],
   optimization: {
     minimize: true,
     minimizer: [new CssMinimizerPlugin()],
+    usedExports: true,
   },
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM',
+  },
+  performance: {
+    // 设置所有产物体积阈值
+    maxAssetSize: 172 * 1024,
+    // 设置 entry 产物体积阈值
+    maxEntrypointSize: 244 * 1024,
+    hints: 'error',
+    // 过滤需要监控的文件类型
+    assetFilter: function (assetFilename) {
+      return assetFilename.endsWith('.js');
+    },
   },
 });
 
