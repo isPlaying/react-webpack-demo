@@ -15,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.(js|ts)x?$/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -38,7 +38,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.less'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.less', '.css'],
     alias: {
       '@': resolve('./src'),
     },
