@@ -11,6 +11,7 @@ module.exports = {
     clean: true,
     publicPath: '/',
     filename: '[name].[contenthash:8].js',
+    chunkFilename: '[name].[contenthash:8].chunk.js',
   },
   module: {
     rules: [
@@ -27,10 +28,11 @@ module.exports = {
                   corejs: '3',
                 },
               ],
-              '@babel/preset-typescript',
               '@babel/preset-react',
+              '@babel/preset-typescript',
             ],
             plugins: ['@babel/plugin-transform-runtime'],
+            cacheDirectory: true,
           },
         },
         exclude: /node_modules/,

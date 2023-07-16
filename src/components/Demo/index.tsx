@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import './index.less';
 import styles from './index.module.less';
 
 const Demo: React.FC = () => {

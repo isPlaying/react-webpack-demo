@@ -5,7 +5,7 @@ interface ILazyWrapperProps {
 }
 
 const LazyWrapper: FC<ILazyWrapperProps> = ({ path }) => {
-  const LazyComponent = lazy(() => import(`@/components${path}`));
+  const LazyComponent = lazy(() => import(/* webpackChunkName: "[request]" */ `@/components${path}`));
   return (
     <Suspense fallback={<div>loading...</div>}>
       <LazyComponent />
