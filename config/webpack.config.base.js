@@ -37,6 +37,18 @@ module.exports = {
         },
         exclude: /node_modules/,
       },
+      {
+        test: /.(png|jpg|jpeg|gif|svg)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024,
+          },
+        },
+        generator: {
+          filename: 'static/images/[name][ext]',
+        },
+      },
     ],
   },
   resolve: {

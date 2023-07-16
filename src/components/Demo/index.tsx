@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styles from './index.module.less';
+import img1 from '@/assets/img1.png';
+import img2 from '@/assets/img2.png';
 
 const Demo: React.FC = () => {
   const [count, setCount] = useState<number>(0);
@@ -13,6 +15,9 @@ const Demo: React.FC = () => {
       <div>{count}</div>
       <input type="text" placeholder="请输入" />
       <button onClick={increment}>increment</button>
+      <br />
+      <img src={img1} />
+      <img src={img2} />
     </>
   );
 };
