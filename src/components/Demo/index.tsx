@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './index.module.less';
 import img1 from '@/assets/img1.png';
 import img2 from '@/assets/img2.png';

@@ -26,7 +26,7 @@ const config = merge(baseConfig, {
               modules: {
                 localIdentName: '[path][name]__[local]--[hash:base64:5]',
               },
-              importLoaders: 1,
+              importLoaders: 2,
             },
           },
           'postcss-loader',
@@ -41,7 +41,7 @@ const config = merge(baseConfig, {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1,
+              importLoaders: 2,
             },
           },
           'postcss-loader',

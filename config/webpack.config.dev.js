@@ -24,7 +24,7 @@ module.exports = merge(baseConfig, {
               modules: {
                 localIdentName: '[path][name]__[local]--[hash:base64:5]',
               },
-              importLoaders: 1,
+              importLoaders: 2,
             },
           },
           'postcss-loader',
@@ -39,7 +39,7 @@ module.exports = merge(baseConfig, {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1,
+              importLoaders: 2,
             },
           },
           'postcss-loader',
@@ -94,6 +94,7 @@ module.exports = merge(baseConfig, {
     hot: true,
     open: true,
     port: 3000,
+    compress: true,
     historyApiFallback: true,
   },
   devtool: 'source-map',
