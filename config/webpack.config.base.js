@@ -18,27 +18,7 @@ module.exports = {
       {
         test: /\.(js|ts)x?$/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  useBuiltIns: 'usage',
-                  corejs: '3',
-                },
-              ],
-              [
-                '@babel/preset-react',
-                {
-                  runtime: 'automatic',
-                },
-              ],
-              '@babel/preset-typescript',
-            ],
-            plugins: ['@babel/plugin-transform-runtime'],
-            cacheDirectory: true,
-          },
+          loader: 'babel-loader?cacheDirectory',
         },
         exclude: /node_modules/,
       },

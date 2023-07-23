@@ -1,5 +1,4 @@
 import { RouteObject } from 'react-router-dom';
-import React from 'react';
 import LazyWrapper from '@/components/LazyWrapper';
 
 const ROUTER_CONFIG: RouteObject[] = [
